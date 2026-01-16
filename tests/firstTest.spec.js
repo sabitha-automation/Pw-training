@@ -91,20 +91,22 @@ test("Playwright locators", async ({ page }) => {
   await page.goto(url);
   await expect(page).toHaveURL(/amazon/);
   await page.getByPlaceholder('Search Amazon.in').fill('mobile stand for desk');
-  //await page.getByRole('button', {name: 'Primary Action'}).click();
   await page.locator('input[type="submit"]').click();
-  const firstProduct = page.locator("div[role='listitem']").first()
-  await firstProduct.locator('#a-autoid-3-announce').click();
+  const Products = page.locator("div[role='listitem']");
+  const count = await Products.count();
+  const randomIndex = Math.floor(Math.random() * count)
+  //const ProductText = (await Products.innerText()).split('\n')[1];;
+  const ProductText = Products.nth(randomIndex).locator('button[aria-label="Add to cart"]')
+  console.log(ProductText)
+  await ProductText.first().click();
   await page.getByText('Go to Cart').click();
   await expect(page).toHaveURL(/cart/);
   await expect(page.locator('//*[@name="proceedToRetailCheckout"]')).toBeVisible();
-  await expect(page.locator('span.a-truncate-cut')).toContainText('Phone Stand');
-
-  //await expect(page.locator("input[role='checkbox']")).toBeChecked();
-  //await page.locator('input#add-to-cart-button').click;
-  //await page.getByPlaceholder("Search products...").fill("shirt");
-  //await page.getByAltText('logo image').click();
-
+  const cartProduct = page.locator('li[class="sc-item-product-title-cont"]').first()
+  const cartProductText = (await cartProduct.innerText());
+  console.log(cartProductText)
+  await expect (cartProduct).toContainText(ProductText);
+  await page.close();
 
 
 
