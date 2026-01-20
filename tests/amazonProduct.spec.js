@@ -1,4 +1,5 @@
-const {test, expect} = require('@playwright/test');
+import { test } from '../fixtures/base.fixtures.js';
+const { expect } = test;
 
   
 test.only("Verify Amazon Product", async ({ page }) => {

@@ -1,4 +1,5 @@
-const {test, expect} = require('@playwright/test');
+import { test } from '../fixtures/base.fixtures.js';
+const { expect } = test;
 
   
 test("Verify Dialog Alert", async ({ page }) => {
