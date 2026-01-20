@@ -7,4 +7,4 @@ export class LoginLocators {
   error = '[data-test="error"]';
   productsTitle = '.title';
 }
-``
+

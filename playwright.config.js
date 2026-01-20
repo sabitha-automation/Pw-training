@@ -1,5 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
-import * as os from 'node:os';  // <-- add this
+import * as os from 'node:os';
  
 export default defineConfig({
   
@@ -22,17 +22,17 @@ export default defineConfig({
     }],
 
       
-  ['allure-playwright', {
-        resultsDir: 'allure-results',      // <- Allure 3.x option
-        detail: true,                      // include pw:api + hooks as steps (set false to reduce noise)
-        suiteTitle: false,                 // keep suite names human-friendly
-        environmentInfo: {                 // will be visible in report Overview
-          os_platform: os.platform(),
-          os_release: os.release(),
-          node_version: process.version,
-        },
-      }],
-    ],
+    ['allure-playwright', {
+          resultsDir: 'allure-results',      // <- Allure 3.x option
+          detail: true,                      // include pw:api + hooks as steps (set false to reduce noise)
+          suiteTitle: false,                 // keep suite names human-friendly
+          environmentInfo: {                 // will be visible in report Overview
+            os_platform: os.platform(),
+            os_release: os.release(),
+            node_version: process.version,
+          },
+        }],
+  ],
   // artifacts (screenshots/videos/traces)
 
   outputDir: 'test-results',    
