@@ -1,0 +1,4 @@
+{
+  "validUser": { "username": "standard_user", "password": "secret_sauce" },
+  "assertions": { "productsTitle": "Products" }
+}
