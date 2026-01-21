@@ -38,9 +38,10 @@ export default defineConfig({
   outputDir: 'test-results',    
   // Artifacts
    use: {
-    baseURL: 'https://www.saucedemo.com',
+    baseURL: 'https://jsonplaceholder.typicode.com/comments?postId=1',
+    ignoreHTTPSErrors: true,
     screenshot: 'only-on-failure',   // 'on' | 'off' | 'only-on-failure'
-    video: 'retain-on-failure',      // 'on' | 'off' | 'retain-on-failure'
+    video: 'on',      // 'on' | 'off' | 'retain-on-failure'
     trace: 'on-first-retry',         // 'on' | 'off' | 'on-first-retry'
   },
 

@@ -1,0 +1,2 @@
+Starting API test: GET /posts/1
+Received post title: sunt aut facere repellat provident occaecati excepturi optio reprehenderit

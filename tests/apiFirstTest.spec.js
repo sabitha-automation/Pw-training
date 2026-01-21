@@ -1,35 +1,39 @@
-import { request } from '@playwright/test';
-// scripts/get-post.js
-const { request } = require('@playwright/test');
 
-(async () => {
-  // 1) Console first
-  console.log('[start] Fetching post #1 from JSONPlaceholder');
+// tests/apiFirstTest.spec.js
+import { test } from '../fixtures/base.fixtures.js';
+const { expect } = test;
 
-  // 2) Create an API client
-  const api = await request.newContext({
-    baseURL: 'https://jsonplaceholder.typicode.com',
+test('example ignoring HTTPS errors', async ({ browser }) => {
+  const context = await browser.newContext({
+    ignoreHTTPSErrors: true,
   });
 
-  try {
-    // 3) GET /posts/1
-    const res = await api.get('/posts/1');
+  const page = await context.newPage();
+  await page.goto('https://jsonplaceholder.typicode.com/comments?postId=1');
+  
+  console.log(await page.title());
+});
 
-    // 4) Check status (simple validation)
-    if (!res.ok()) {
-      throw new Error(`Request failed: ${res.status()} ${res.statusText()}`);
-    }
 
-    // 5) Parse JSON and log
-    const post = await res.json();
-    console.log('[ok] Status:', res.status());
-    console.log('[data]', JSON.stringify(post, null, 2));
-    console.log('[title]', post.title);
+test('first console then GET /posts/1', async ({ request }, testInfo) => {
+  console.log('Starting API test: GET /posts/1');
+  const res = await request.get('https://jsonplaceholder.typicode.com/comments?postId=1');
+  expect(res.ok()).toBeTruthy();
+  expect(res.status()).toBe(200);
 
-  } catch (err) {
-    console.error('[error]', err);
-    process.exitCode = 1;
-  } finally {
-    await api.dispose();
-  }
-})();
+  const body = await res.json();
+  expect(body).toMatchObject({
+    userId: expect.any(Number),
+    id: 1,
+    title: expect.any(String),
+    body: expect.any(String),
+  });
+
+  await testInfo.attach('GET /posts/1 response', {
+    body: JSON.stringify(body, null, 2),
+    contentType: 'application/json',
+  });
+
+  console.log('Received post title:', body.title);
+});
+
