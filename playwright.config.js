@@ -48,15 +48,24 @@ export default defineConfig({
   // Only desktop Chromium for now
 
   projects: [
-    {
-      use: {
-        ...devices['Desktop Chrome'],
-        headless: false,
-        launchOptions: { slowMo: 2000 }, // tune delay you want to watch
-      },
-    },
-
-    
+    { 
+      name: 'Edge',
+        use: {
+          channel: 'msedge',
+          ...devices['Desktop Edge'],
+          headless: false,
+          launchOptions: { slowMo: 500 },
+        },
+      }
+      //{
+        //name: 'Chrome',
+        //use: {
+          //channel: 'chrome',
+          //...devices['Desktop Chrome'],
+ // uses locally installed Chrome
+      //headless: false,
+      //launchOptions: { slowMo: 2000 }, // tune delay you want to watch
+    //}
   ],
 
 });

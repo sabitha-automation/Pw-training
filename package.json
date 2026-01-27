@@ -1,13 +1,16 @@
-
 {
   "devDependencies": {
-    "@playwright/test": "^1.57.0",
+    "@playwright/test": "^1.58.0",
     "@types/node": "^25.0.7",
     "allure-commandline": "^2.36.0",
     "allure-playwright": "^3.4.5"
   },
   "scripts": {
+
     "test": "playwright test",
+    "test:edge": "playwright test --project=Edge",
+    "test:chrome": "playwright test --project=Chrome",
+    "report:html": "playwright show-report",
     "allure:generate": "allure generate allure-results --clean -o allure-report",
     "allure:open": "allure open allure-report",
     "allure:serve": "allure serve allure-results"
