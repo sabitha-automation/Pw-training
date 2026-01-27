@@ -9,7 +9,7 @@ export class LoginActions {
 
   async openLoginPage() {
     // baseURL must be set in playwright.config
-    await this.page.goto('/');
+    await this.page.goto('https://www.saucedemo.com/');
     // Attach screenshot to Allure
     const shot = await this.page.screenshot({ fullPage: true });
     allure.attachment('Open login page - screenshot', shot, 'image/png');

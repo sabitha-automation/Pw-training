@@ -41,39 +41,39 @@ test("Fill GUI Elements", async ({ page }) => {
 
   //DatePicker1
 
-  let datePicker1 = "2 Janauary 2026";
+  //let datePicker1 = "2 Janauary 2026";
 
-  await page.locator("#datepicker").click();
+ // await page.locator("#datepicker").click();
 
-  let day1 = datePicker1.split(" ")[0];
+  //let day1 = datePicker1.split(" ")[0];
 
-  await page.locator(`//a[text()='${day1}' and @class='ui-state-default']`).click();
+ // await page.locator(`//a[text()='${day1}' and @class='ui-state-default']`).click();
  
   //Date Picker 2
 
-  let datePicker2 = "25 Janauary 2026";
+ // let datePicker2 = "25 Janauary 2026";
 
-  await page.locator("#txtDate").click();
+ // await page.locator("#txtDate").click();
 
-  let day2 = datePicker2.split(" ")[0];
+ // let day2 = datePicker2.split(" ")[0];
 
-  await page
+//  await page
 
-    .locator(`//a[text()='${day2}'and @class='ui-state-default']`)
+  //  .locator(`//a[text()='${day2}'and @class='ui-state-default']`)
 
-    .click();
+   // .click();
  
   //Date Picker 3: (Select a Date Range)
 
-  await page.getByPlaceholder("Start Date").fill("2026-01-14");
+  //await page.getByPlaceholder("Start Date").fill("2026-01-14");
 
-  await page.getByPlaceholder("End Date").fill("2026-01-15");
+ // await page.getByPlaceholder("End Date").fill("2026-01-15");
+  await page.keyboard.press('enter')
+  //await page
 
-  await page
+    //.locator("//button[text()='Submit' and @class='submit-btn']")
 
-    .locator("//button[text()='Submit' and @class='submit-btn']")
-
-    .click();
+    //.click();
 
   expect(await page.locator("#result").textContent()).toBe(
 

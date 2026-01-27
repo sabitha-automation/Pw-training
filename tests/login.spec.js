@@ -1,7 +1,7 @@
 
 // tests/login.e2e.spec.js
 import { test } from '../fixtures/base.fixtures.js';
-import testData from '../data/testData.json' assert { type: 'json' };
+import testData from '../data/testData.json'
 import * as allure from 'allure-js-commons';
 
   test('valid user can login and see products page', async ({loginActions, loginValidations }) => {

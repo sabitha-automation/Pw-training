@@ -8,7 +8,7 @@ export default defineConfig({
   /* Run tests in files in parallel */
   fullyParallel: true,
   // one retry locally (good for learning)
-  retries: 1,
+  retries: 0,
   // per-test timeout (ms)
   timeout: 30_000,                   
   // assertion timeout (ms)
@@ -41,7 +41,7 @@ export default defineConfig({
     baseURL: 'https://jsonplaceholder.typicode.com/comments?postId=1',
     ignoreHTTPSErrors: true,
     screenshot: 'only-on-failure',   // 'on' | 'off' | 'only-on-failure'
-    video: 'on',      // 'on' | 'off' | 'retain-on-failure'
+    video: 'off',      // 'on' | 'off' | 'retain-on-failure'
     trace: 'on-first-retry',         // 'on' | 'off' | 'on-first-retry'
   },
 
